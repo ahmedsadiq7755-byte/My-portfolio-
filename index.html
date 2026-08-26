@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Portfolio</title>
+    <title>Mera Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<img src="profile.jpeg" alt="Profile Picture" class="profile-img">
+
+    <img src="profile.jpeg" alt="Profile Picture" class="profile-img">
     <h1>Hello, I am a Web Developer</h1>
     <p>I know Basic HTML, CSS, and JavaScript.</p>
 
@@ -14,47 +15,53 @@
         <li>HTML & CSS</li>
         <li>Basic JavaScript</li>
         <li>Responsive Web Design</li>
-<h2>Contact</h2>
-    <p>You can Contact me on :</p>
-<ul>
-        <li><a href="https://github.com/yourusername" target="_blank">GitHub</a></li>
-        <li><a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a></li>
-        <li><a href="mailto:ahmed.sadiq7755@gmail.com">ahmed.sadiq7755@gmail.com</a></li>
     </ul>
-<!-- Live Greeting -->
-<h3 id="greeting"></h3>
 
-<!-- Interactive Contact Button -->
-<button onclick="toggleContact()" id="btn">Hide Contact Details</button>
+    <!-- Contact Section -->
+    <div id="contact-section">
+        <h2>Contact</h2>
+        <p>You can Contact me on :</p>
+        <ul>
+            <li><a href="https://github.com/ahmedsadiq7755-byte" target="_blank">GitHub</a></li>
+            <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+            <li><a href="mailto:ahmed.sadiq7755@gmail.com">ahmed.sadiq7755@gmail.com</a></li>
+        </ul>
+    </div>
 
-<script>
-    // Time ke hisab se Greeting badalna
-    let hours = new Date().getHours();
-    let greetingText = "";
-    
-    if (hours < 12) {
-        greetingText = "Good Morning! ☀️";
-    } else if (hours < 18) {
-        greetingText = "Good Afternoon! 🌤️";
-    } else {
-        greetingText = "Good Evening! 🌙";
-    }
-    
-    document.getElementById("greeting").innerText = greetingText;
+    <h3 id="greeting"></h3>
 
-    // Contact details show/hide karne ka function
-    function toggleContact() {
-        let contactSection = document.getElementById("contact-section");
-        let btn = document.getElementById("btn");
+    <!-- Interactive Button -->
+    <button onclick="toggleContact()" id="btn">Hide Contact Details</button>
+
+    <script>
+        // Greeting logic
+        let hours = new Date().getHours();
+        let greetingText = "";
         
-        if (contactSection.style.display === "none") {
-            contactSection.style.display = "block";
-            btn.innerText = "Hide Contact Details";
+        if (hours < 12) {
+            greetingText = "Good Morning! ☀️";
+        } else if (hours < 18) {
+            greetingText = "Good Afternoon! 🌤️";
         } else {
-            contactSection.style.display = "none";
-            btn.innerText = "Show Contact Details";
+            greetingText = "Good Evening! 🌙";
         }
-    }
-</script>
+        
+        document.getElementById("greeting").innerText = greetingText;
+
+        // Button Click Logic
+        function toggleContact() {
+            let contactSection = document.getElementById("contact-section");
+            let btn = document.getElementById("btn");
+            
+            if (contactSection.style.display === "none") {
+                contactSection.style.display = "block";
+                btn.innerText = "Hide Contact Details";
+            } else {
+                contactSection.style.display = "none";
+                btn.innerText = "Show Contact Details";
+            }
+        }
+    </script>
+
 </body>
 </html>
