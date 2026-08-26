@@ -66,4 +66,18 @@ a {
 
 a:hover {
     text-decoration: underline;
+}s
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
 }

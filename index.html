@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mera Portfolio</title>
+    <title>My Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,6 +21,40 @@
         <li><a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a></li>
         <li><a href="mailto:ahmed.sadiq7755@gmail.com">ahmed.sadiq7755@gmail.com</a></li>
     </ul>
+<!-- Live Greeting -->
+<h3 id="greeting"></h3>
 
+<!-- Interactive Contact Button -->
+<button onclick="toggleContact()" id="btn">Hide Contact Details</button>
+
+<script>
+    // Time ke hisab se Greeting badalna
+    let hours = new Date().getHours();
+    let greetingText = "";
+    
+    if (hours < 12) {
+        greetingText = "Good Morning! ☀️";
+    } else if (hours < 18) {
+        greetingText = "Good Afternoon! 🌤️";
+    } else {
+        greetingText = "Good Evening! 🌙";
+    }
+    
+    document.getElementById("greeting").innerText = greetingText;
+
+    // Contact details show/hide karne ka function
+    function toggleContact() {
+        let contactSection = document.getElementById("contact-section");
+        let btn = document.getElementById("btn");
+        
+        if (contactSection.style.display === "none") {
+            contactSection.style.display = "block";
+            btn.innerText = "Hide Contact Details";
+        } else {
+            contactSection.style.display = "none";
+            btn.innerText = "Show Contact Details";
+        }
+    }
+</script>
 </body>
 </html>
