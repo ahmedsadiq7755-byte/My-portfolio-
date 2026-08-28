@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mera Portfolio</title>
+    <title>My Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -32,36 +32,53 @@
 
     <!-- Interactive Button -->
     <button onclick="toggleContact()" id="btn">Hide Contact Details</button>
+    
+    <br><br>
+
+    <!-- Voice / Mic Section -->
+    <button id="mic-btn" onclick="startMic()">🎤 Start Voice</button>
+    <p id="voice-output" style="color: blue; font-weight: bold;"></p>
 
     <script>
-        // Greeting logic
-        let hours = new Date().getHours();
-        let greetingText = "";
-        
-        if (hours < 12) {
-            greetingText = "Good Morning! ☀️";
-        } else if (hours < 18) {
-            greetingText = "Good Afternoon! 🌤️";
-        } else {
-            greetingText = "Good Evening! 🌙";
-        }
-        
-        document.getElementById("greeting").innerText = greetingText;
-
-        // Button Click Logic
+        // Toggle Contact Function
         function toggleContact() {
-            let contactSection = document.getElementById("contact-section");
-            let btn = document.getElementById("btn");
-            
-            if (contactSection.style.display === "none") {
-                contactSection.style.display = "block";
+            var contactDiv = document.getElementById("contact-section");
+            var btn = document.getElementById("btn");
+            if (contactDiv.style.display === "none") {
+                contactDiv.style.display = "block";
                 btn.innerText = "Hide Contact Details";
             } else {
-                contactSection.style.display = "none";
+                contactDiv.style.display = "none";
                 btn.innerText = "Show Contact Details";
             }
         }
-    </script>
 
+        // Voice Recognition Function
+        function startMic() {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            
+            if (SpeechRecognition) {
+                const recognition = new SpeechRecognition();
+                recognition.lang = 'en-US';
+
+                recognition.onstart = function() {
+                    document.getElementById("voice-output").innerText = "Listening... Speak now!";
+                };
+
+                recognition.onresult = function(event) {
+                    const transcript = event.results[0][0].transcript;
+                    document.getElementById("voice-output").innerText = "You said: " + transcript;
+                };
+
+                recognition.onerror = function(event) {
+                    document.getElementById("voice-output").innerText = "Error: " + event.error;
+                };
+
+                recognition.start();
+            } else {
+                alert("Speech recognition is not supported in this browser.");
+            }
+        }
+    </script>
 </body>
 </html>
